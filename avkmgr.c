@@ -4,7 +4,7 @@
 
 
 
-
+#pragma warning(disable:4054)
 
 
 
@@ -51,13 +51,93 @@ NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT  DriverObject , _In_ PUNICODE_STRING Re
 	RtlInitUnicodeString(&DeviceName , avk_SystemRoutineName(0x3b));
 	IoCreateDevice(DriverObject , 0 , &DeviceName , 0x22u , 0x100u , 0 , &DeviceObject);
 	funcc.field_1C = 1;
-	sub_1400017A4(L"avkmgr.sys successfully loaded" , DriverObject);
+	avk_IoErrorLog(L"avkmgr.sys successfully loaded" , 0x40070011 , DriverObject);
 	return 0;
 }
 
-NTSTATUS func9() {
+
+extern AVKMGR_EXPORT NTSTATUS func0(__int64 Exchange) {
+	for (int i = 0; i < 4; i++) {
+		if (!_InterlockedCompareExchange64((volatile LONG64 *)(&g_FunTable.sub_1F0)[i] , Exchange , 0)) {
+			return 0;
+		}
+	}
+	return 0x0C0000001;
+}
+
+extern AVKMGR_EXPORT NTSTATUS func1(__int64 Exchange) {
+	for (int i = 0; i < 4; i++) {
+		if (!_InterlockedCompareExchange64((volatile LONG64 *)(&g_FunTable.sub_210)[i] , Exchange , 0)) {
+			return 0;
+		}
+	}
+	return 0x0C0000001;
+}
+
+extern AVKMGR_EXPORT NTSTATUS func2(__int64 Exchange) {
+	for (int i = 0; i < 4; i++) {
+		if (!_InterlockedCompareExchange64((volatile LONG64 *)(&g_FunTable.sub_230)[i] , Exchange , 0)) {
+			return 0;
+		}
+	}
+	return 0x0C0000001;
+}
+
+extern AVKMGR_EXPORT NTSTATUS func3(__int64 Exchange) {
+	for (int i = 0; i < 4; i++) {
+		if (!_InterlockedCompareExchange64((volatile LONG64 *)(&g_FunTable.sub_250)[i] , Exchange , 0)) {
+			return 0;
+		}
+	}
+	return 0x0C0000001;
+}
+
+
+extern AVKMGR_EXPORT NTSTATUS func4(__int64 Exchange) {
+	for (int i = 0; i < 4; i++) {
+		if (Exchange == _InterlockedCompareExchange64((volatile LONG64 *)(&g_FunTable.sub_1F0)[i] , 0 , Exchange)) {
+			return 0;
+		}
+	}
+	return 0x0C0000001;
+}
+
+extern AVKMGR_EXPORT NTSTATUS func5(__int64 Exchange) {
+	for (int i = 0; i < 4; i++) {
+		if (!_InterlockedCompareExchange64((volatile LONG64 *)(&g_FunTable.sub_210)[i] , Exchange , 0)) {
+			return 0;
+		}
+	}
+	return 0x0C0000001;
+}
+
+
+extern AVKMGR_EXPORT NTSTATUS func6(__int64 Exchange) {
+	for (int i = 0; i < 4; i++) {
+		if (Exchange == _InterlockedCompareExchange64((volatile LONG64 *)(&g_FunTable.sub_230)[i] , 0 , Exchange)) {
+			return 0;
+		}
+	}
+	return 0x0C0000001;
+}
+
+extern AVKMGR_EXPORT NTSTATUS func7(__int64 Exchange) {
+	for (int i = 0; i < 4; i++) {
+		if (Exchange == _InterlockedCompareExchange64((volatile LONG64 *)(&g_FunTable.sub_250)[i] , 0 , Exchange)) {
+			return 0;
+		}
+	}
+	return 0x0C0000001;
+}
+
+extern AVKMGR_EXPORT NTSTATUS func9() {
 	return 0;
 }
+
+extern AVKMGR_EXPORT NTSTATUS funca() {
+	return 0;
+}
+
 
 void sub_140001718() {
 	unsigned short *loc_word_140004024 = (unsigned short *)word_140004024;
@@ -106,28 +186,44 @@ void avk_GetSystemRoutineAddress() {
 	}
 }
 
-void sub_140001390(void *a1 , void *a2 , void *a3) {
-	UNREFERENCED_PARAMETER(a1);
-	UNREFERENCED_PARAMETER(a2);
-	UNREFERENCED_PARAMETER(a3);
+void* sub_140001390(void *a1 , void *a2 , void *a3) {
+	if (g_FunTable.sub_1F0) {
+		g_FunTable.sub_1F0();
+	}
+	for (int i = 0; i < 3; i++) {
+		g_FunTable.sub_1F8[i](a1 , a2 , a3);
+	}
+	return &g_FunTable.sub_210;
 }
 
-void sub_14000130C(void *a1 , void *a2 , void *a3) {
-	UNREFERENCED_PARAMETER(a1);
-	UNREFERENCED_PARAMETER(a2);
-	UNREFERENCED_PARAMETER(a3);
+void* sub_14000130C(void *a1 , void *a2 , void *a3) {
+	if (g_FunTable.sub_210) {
+		g_FunTable.sub_210();
+	}
+	for (int i = 0; i < 3; i++) {
+		g_FunTable.sub_218[i](a1 , a2 , a3);
+	}
+	return &g_FunTable.sub_230;
 }
 
-void sub_140001414(void *a1 , void *a2 , void *a3) {
-	UNREFERENCED_PARAMETER(a1);
-	UNREFERENCED_PARAMETER(a2);
-	UNREFERENCED_PARAMETER(a3);
+void* sub_140001414(void *a1 , void *a2 , void *a3) {
+	if (g_FunTable.sub_230) {
+		g_FunTable.sub_230();
+	}
+	for (int i = 0; i < 3; i++) {
+		g_FunTable.sub_238[i](a1 , a2 , a3);
+	}
+	return &g_FunTable.sub_250;
 }
 
-void sub_140001608(void *a1 , void *a2 , void *a3) {
-	UNREFERENCED_PARAMETER(a1);
-	UNREFERENCED_PARAMETER(a2);
-	UNREFERENCED_PARAMETER(a3);
+void* sub_140001608(void *a1 , void *a2 , void *a3) {
+	if (g_FunTable.sub_250) {
+		g_FunTable.sub_250();
+	}
+	for (int i = 0; i < 3; i++) {
+		g_FunTable.sub_258[i](a1 , a2 , a3);
+	}
+	return &g_FunTable.sub_270;
 }
 
 WCHAR * avk_SystemRoutineName(int FunNumber) {
@@ -137,10 +233,41 @@ WCHAR * avk_SystemRoutineName(int FunNumber) {
 	return g_SystemRoutineName[FunNumber];
 }
 
-NTSTATUS sub_1400017A4(WCHAR *a1 , PDRIVER_OBJECT DriverObject) {
-	UNREFERENCED_PARAMETER(a1);
-	UNREFERENCED_PARAMETER(DriverObject);
-	return 0;
+void avk_IoErrorLog(WCHAR *a1 , int a2 , PDRIVER_OBJECT DriverObject) {
+	struct ERRORLOGENTRY {
+		int field_0;
+		int field_4;
+		__int16 field_8;
+		__int16 field_A;
+		int field_C;
+		int field_10;
+		__unaligned __declspec(align(1)) __int64 field_14;
+		int field_1C;
+		__int64 field_20;
+		__int64 field_28;
+		__int64 field_30;
+		char field_38[184];
+	}*pErrorLogEntry;
+	UNICODE_STRING ustring ={ 0 };
+	RtlInitUnicodeString(&ustring , a1);
+	UCHAR EntrySize = (UCHAR)(ustring.Length + 0x32);
+	if (EntrySize > 0xf0) {
+		return;
+	}
+	pErrorLogEntry  = IoAllocateErrorLogEntry(DriverObject , EntrySize);
+	if (!pErrorLogEntry) {
+		return;
+	}
+	pErrorLogEntry->field_C = a2;
+	pErrorLogEntry->field_14 = 0;
+	pErrorLogEntry->field_0 = 0;
+	pErrorLogEntry->field_10 = 0;
+	pErrorLogEntry->field_4 = 0x300001;
+	pErrorLogEntry->field_8 = 0;
+	pErrorLogEntry->field_1C = 0;
+	memmove(&pErrorLogEntry->field_30 , ustring.Buffer , ustring.Length);
+	*(USHORT *)((UCHAR *)pErrorLogEntry->field_30 + ustring.Length) = 0;
+	IoWriteErrorLogEntry(pErrorLogEntry);
 }
 
 void sub_14000168C() {
