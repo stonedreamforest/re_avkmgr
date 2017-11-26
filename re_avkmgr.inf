@@ -7,7 +7,7 @@ Signature="$WINDOWS NT$"
 Class=System
 ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
 Provider=%ManufacturerName%
-DriverVer = 11/26/2017,10.5.0.306
+DriverVer=
 CatalogFile=re_avkmgr.cat
 
 [DestinationDirs]
@@ -21,9 +21,9 @@ DefaultDestDir = 12
 
 
 [Manufacturer]
-%ManufacturerName%=Standard,NTamd64
+%ManufacturerName%=Standard,NT$ARCH$
 
-[Standard.NTamd64]
+[Standard.NT$ARCH$]
 
 
 [Strings]
