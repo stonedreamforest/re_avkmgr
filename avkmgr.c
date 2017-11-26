@@ -1,7 +1,6 @@
 #include "ntddk.h"
-#include "avkmgr.h"
 #include "gdata.h"
-
+#include "avkmgr.h"
 
 
 
@@ -49,7 +48,7 @@ NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT  DriverObject , _In_ PUNICODE_STRING Re
 	}
 	g_FunTable.sub_108(sub_140001414);
 	g_FunTable.sub_110(sub_140001608);
-	RtlInitUnicodeString(&DeviceName , sub_1400016F8(0x3b));
+	RtlInitUnicodeString(&DeviceName , avk_SystemRoutineName(0x3b));
 	IoCreateDevice(DriverObject , 0 , &DeviceName , 0x22u , 0x100u , 0 , &DeviceObject);
 	funcc.field_1C = 1;
 	sub_1400017A4(L"avkmgr.sys successfully loaded" , DriverObject);
@@ -65,7 +64,7 @@ void sub_140001718() {
 	unsigned short *loc_word_140005204 = (unsigned short *)word_140005204;
 	sub_14000168C();
 	for (int i = 0 , j = 0; i < 0x6d; i++) {
-		qword_1400059C0[i] = loc_word_140004024;
+		g_SystemRoutineName[i] = loc_word_140004024;
 		for (j = 0; loc_word_140004024[j]; j++);
 		loc_word_140004024 = &loc_word_140004024[j];
 	}
@@ -95,8 +94,8 @@ void avk_GetSystemRoutineAddress() {
 		g_FunTable.field_18 = 0;
 	}
 	for (int i = 0; i < 0x38; i++) {
-		if (!(&g_FunTable.field_0)[i]) {			
-			RtlInitUnicodeString(&SystemRoutineName , sub_1400016F8(FunNumber[i]));
+		if (!(&g_FunTable.field_0)[i]) {
+			RtlInitUnicodeString(&SystemRoutineName , avk_SystemRoutineName(FunNumber[i]));
 			(&g_FunTable.field_0)[i] = MmGetSystemRoutineAddress(&SystemRoutineName);
 		}
 	}
@@ -131,9 +130,11 @@ void sub_140001608(void *a1 , void *a2 , void *a3) {
 	UNREFERENCED_PARAMETER(a3);
 }
 
-WCHAR *sub_1400016F8(int a1) {
-	UNREFERENCED_PARAMETER(a1);
-	return 0;
+WCHAR * avk_SystemRoutineName(int FunNumber) {
+	if (FunNumber > 0x6d || !dword_140004020) {
+		return 0;
+	}
+	return g_SystemRoutineName[FunNumber];
 }
 
 NTSTATUS sub_1400017A4(WCHAR *a1 , PDRIVER_OBJECT DriverObject) {

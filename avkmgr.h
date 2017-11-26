@@ -83,6 +83,12 @@ void sub_140001390(void *a1 , void *a2 , void *a3);
 void sub_14000130C(void *a1 , void *a2 , void *a3);
 void sub_140001414(void *a1 , void *a2 , void *a3);
 void sub_140001608(void *a1 , void *a2 , void *a3);
-WCHAR *sub_1400016F8(int a1);
+
+//************************************************************************************************************
+//	创建作者  :	Tennn
+//  修改时间  :  2017/11/26 12:26
+//	函数功能  :	获取系统函数字符串 sub_1400016F8
+//************************************************************************************************************
+WCHAR *avk_SystemRoutineName(int FunNumber);
 NTSTATUS sub_1400017A4(WCHAR *a1 , PDRIVER_OBJECT DriverObject);
 void sub_14000168C();

@@ -551,4 +551,4 @@ unsigned char word_140005204[] =
 };
 
 void *qword_140005860[0x2c]={ 0 };
-void *qword_1400059C0[200]={ 0 };
+WCHAR *g_SystemRoutineName[200]={ 0 };

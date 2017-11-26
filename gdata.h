@@ -1,7 +1,7 @@
 #pragma once
 
 
-
+#include "ntddk.h"
 
 
 
@@ -19,4 +19,5 @@ extern unsigned char word_140005204[];
 
 
 extern void *qword_140005860[];
-extern void *qword_1400059C0[];
+//qword_1400059C0
+extern WCHAR *g_SystemRoutineName[];
