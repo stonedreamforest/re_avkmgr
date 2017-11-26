@@ -50,8 +50,8 @@ extern AVKMGR_EXPORT NTSTATUS func4(__int64 Exchange);
 extern AVKMGR_EXPORT NTSTATUS func5(__int64 Exchange);
 extern AVKMGR_EXPORT NTSTATUS func6(__int64 Exchange);
 extern AVKMGR_EXPORT NTSTATUS func7(__int64 Exchange);
+extern AVKMGR_EXPORT NTSTATUS func8();
 extern AVKMGR_EXPORT NTSTATUS func9();
-extern AVKMGR_EXPORT  NTSTATUS(__stdcall *func8)() = func9;
 extern AVKMGR_EXPORT NTSTATUS funca();
 extern AVKMGR_EXPORT funcb = 0;
 extern AVKMGR_EXPORT struct FUNCC {

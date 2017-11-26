@@ -130,6 +130,10 @@ extern AVKMGR_EXPORT NTSTATUS func7(__int64 Exchange) {
 	return 0x0C0000001;
 }
 
+extern AVKMGR_EXPORT NTSTATUS func8() {
+	return 0;
+}
+
 extern AVKMGR_EXPORT NTSTATUS func9() {
 	return 0;
 }
