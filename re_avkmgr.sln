@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "re_avkmgr", "re_avkmgr.vcxproj", "{0C35DF79-7740-4CFA-ADB6-691F2C4DD748}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "c:\Users\stone\documents\visual studio 2015\Projects\test\test.vcxproj", "{E64D437D-F859-4720-BA29-CD3F02A6791D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -41,6 +43,18 @@ Global
 		{0C35DF79-7740-4CFA-ADB6-691F2C4DD748}.Release|x86.ActiveCfg = Release|Win32
 		{0C35DF79-7740-4CFA-ADB6-691F2C4DD748}.Release|x86.Build.0 = Release|Win32
 		{0C35DF79-7740-4CFA-ADB6-691F2C4DD748}.Release|x86.Deploy.0 = Release|Win32
+		{E64D437D-F859-4720-BA29-CD3F02A6791D}.Debug|ARM.ActiveCfg = Debug|Win32
+		{E64D437D-F859-4720-BA29-CD3F02A6791D}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{E64D437D-F859-4720-BA29-CD3F02A6791D}.Debug|x64.ActiveCfg = Debug|x64
+		{E64D437D-F859-4720-BA29-CD3F02A6791D}.Debug|x64.Build.0 = Debug|x64
+		{E64D437D-F859-4720-BA29-CD3F02A6791D}.Debug|x86.ActiveCfg = Debug|Win32
+		{E64D437D-F859-4720-BA29-CD3F02A6791D}.Debug|x86.Build.0 = Debug|Win32
+		{E64D437D-F859-4720-BA29-CD3F02A6791D}.Release|ARM.ActiveCfg = Release|Win32
+		{E64D437D-F859-4720-BA29-CD3F02A6791D}.Release|ARM64.ActiveCfg = Release|Win32
+		{E64D437D-F859-4720-BA29-CD3F02A6791D}.Release|x64.ActiveCfg = Release|x64
+		{E64D437D-F859-4720-BA29-CD3F02A6791D}.Release|x64.Build.0 = Release|x64
+		{E64D437D-F859-4720-BA29-CD3F02A6791D}.Release|x86.ActiveCfg = Release|Win32
+		{E64D437D-F859-4720-BA29-CD3F02A6791D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

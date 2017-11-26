@@ -9,7 +9,11 @@ typedef void(__stdcall *pfun)(pfun_1s a1 , int zero);
 typedef void(__stdcall *pfun2)(pfun_1s a1);
 
 struct FT_1400055E0 {
-	char field_0[248];
+	void* field_0;
+	void* field_8;
+	void* field_10;
+	void* field_18;
+	char field_20[216];
 	pfun sub_F8;
 	pfun sub_100;
 	pfun2 sub_108;
@@ -69,7 +73,12 @@ extern AVKMGR_EXPORT struct FUNCC {
 extern AVKMGR_EXPORT NTSTATUS func9();
 
 void sub_140001718();
-void sub_140001000();
+//************************************************************************************************************
+//	创建作者  :	Tennn
+//  修改时间  :  2017/11/26 12:00
+//	函数功能  :	根据函数编号获取系统函数地址 sub_140001000
+//************************************************************************************************************
+void avk_GetSystemRoutineAddress();
 void sub_140001390(void *a1 , void *a2 , void *a3);
 void sub_14000130C(void *a1 , void *a2 , void *a3);
 void sub_140001414(void *a1 , void *a2 , void *a3);

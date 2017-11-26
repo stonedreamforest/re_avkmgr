@@ -60,3 +60,4 @@ re_avkmgr/
 *.tlog
 x64/Debug/re_avkmgr.inf
 x64/Debug/re_avkmgr.inf
+*.ipch

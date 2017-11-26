@@ -39,7 +39,7 @@ NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT  DriverObject , _In_ PUNICODE_STRING Re
 	g_dwMajorVersion = os.dwMajorVersion;
 	g_dwMinorVersion = os.dwMinorVersion;
 	sub_140001718();
-	sub_140001000();
+	avk_GetSystemRoutineAddress();
 	func9();
 	if (g_FunTable.sub_100) {
 		g_FunTable.sub_100(sub_140001390 , 0);
@@ -78,8 +78,33 @@ void sub_140001718() {
 	dword_140005200 = 1;
 }
 
-void sub_140001000() {
-
+void avk_GetSystemRoutineAddress() {
+	UNICODE_STRING SystemRoutineName={ 0 };
+	int FunNumber[] ={
+		6, 7, 8, 9,
+		0xa, 2, 3, 5,
+		0xc, 0xd,
+		0xf, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20,
+		4, 0x21, 0x22, 0x23,
+		0x24, 0x25, 0x26,1 ,
+		0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36,
+		0x37, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f, 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, };
+	if (g_dwMajorVersion < 6) {
+		g_FunTable.field_0 = 0;
+		g_FunTable.field_10 = 0;
+		g_FunTable.field_18 = 0;
+	}
+	for (int i = 0; i < 0x38; i++) {
+		if (!(&g_FunTable.field_0)[i]) {			
+			RtlInitUnicodeString(&SystemRoutineName , sub_1400016F8(FunNumber[i]));
+			(&g_FunTable.field_0)[i] = MmGetSystemRoutineAddress(&SystemRoutineName);
+		}
+	}
+	if (g_dwMajorVersion < 6) {
+		g_FunTable.field_0 = 0;
+		g_FunTable.field_10 = 0;
+		g_FunTable.field_18 = 0;
+	}
 }
 
 void sub_140001390(void *a1 , void *a2 , void *a3) {
