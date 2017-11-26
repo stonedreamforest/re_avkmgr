@@ -56,3 +56,5 @@ dkms.conf
 *.sys
 *.cat
 re_avkmgr/
+*.log
+*.tlog
