@@ -58,3 +58,5 @@ dkms.conf
 re_avkmgr/
 *.log
 *.tlog
+x64/Debug/re_avkmgr.inf
+x64/Debug/re_avkmgr.inf
