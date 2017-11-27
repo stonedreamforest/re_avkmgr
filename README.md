@@ -6,7 +6,7 @@
 
 
 ## 特征
-- ...
+- Avira Manager Driver
 
 
 
